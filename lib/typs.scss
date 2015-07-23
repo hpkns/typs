@@ -1,0 +1,33 @@
+
+$TYPS_RATIO_E-2:    1.35914091423;
+$TYPS_RATIO_SQRT2:  1.41421356237;
+$TYPS_RATIO_PI-2:   1.57079632679;
+$TYPS_RATIO_GOLDEN: 1.61803398875;
+$TYPS_RATIO_E:      2.71828182846;
+
+$typs: ()!default;
+
+$typs_defaults: (
+    ratio: $TYPS_RATIO_GOLDEN,
+    steps: 4,
+    base:  1em,
+);
+
+@function typs-get-option($name) {
+    $options: map-merge($typs_defaults, $typs);
+
+    @if map-has-key($options, $name){
+        @return map-get($options, $name);
+    }
+    @else {
+        @return false;
+    }
+}
+
+@function typs ($n: 0, 
+    $base:  typs-get-option(base), 
+    $ratio: typs-get-option(ratio), 
+    $steps: typs-get-option(steps)
+) {
+    @return $base * pow($ratio, ($n / $steps));
+}
