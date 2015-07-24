@@ -1,0 +1,22 @@
+{
+  "name": "Typs",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hpkns/typs",
+  "authors": [
+    "Thomas Hupkens <thomas@hupkens.be>"
+  ],
+  "description": "A simple and powerful typographic scale generator",
+  "main": "dist/_typs.scss",
+  "keywords": [
+    "Compass",
+    "typography"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
