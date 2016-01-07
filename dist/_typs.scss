@@ -1,4 +1,3 @@
-
 $TYPS_RATIO_E-2:    1.35914091423;
 $TYPS_RATIO_SQRT2:  1.41421356237;
 $TYPS_RATIO_PI-2:   1.57079632679;
@@ -29,5 +28,20 @@ $typs_defaults: (
     $ratio: typs-get-option(ratio), 
     $steps: typs-get-option(steps)
 ) {
-    @return $base * pow($ratio, ($n / $steps));
+
+    @if $n == 0 {
+        @return $base;
+    }
+    @else {
+        @if unit($base) == 'px' {
+            @return $base * pow($ratio, ($n / $steps));
+        }
+        @else if unit($base) == 'em' or unit($base) == 'rem' or unit($base) == '%' {
+            @if $base / ($base * 0 + 1) != 1 {
+                @return $base * pow($ratio, ($n / $steps));
+            } @else {
+                @return ($base * 0 + 1) * pow($ratio, ($n / $steps));
+            }
+        }
+    }
 }
